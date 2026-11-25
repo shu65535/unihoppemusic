@@ -1,0 +1,85 @@
+{
+  "version": 2,
+  "instrument": "drums",
+  "name": "デフォルト",
+  "source": "builtin",
+  "order": 10,
+  "meter": "4/4",
+  "note": "Phase 2 の音源解析で 4/4 の11曲から出した値の中央値（draft/presets/drums/_merged_drums_4-4.json の写し）。曲: 19 absolute configuration.m4a / 1-12 battle of the shadows.m4a / 04 frenetic.m4a / 2-09 godsibb.m4a / 1-21 luminous sword.m4a / 22 M24.m4a / 2-10 Numquam vincar.m4a / 3-16 she has to overcome her fear.m4a / 3-22 the four rings.m4a / 1-15 Venari strigas.m4a / 37 we're here for you.m4a",
+  "params": {
+    "accentGrid": {
+      "4/4": {
+        "acc": [
+          1,
+          0,
+          0,
+          -5,
+          1,
+          0,
+          0,
+          -2,
+          0,
+          0,
+          0,
+          -2,
+          1,
+          -2,
+          0,
+          -3,
+          1,
+          0,
+          0,
+          -5,
+          1,
+          0,
+          0,
+          -2,
+          0,
+          -2,
+          0,
+          -3,
+          1,
+          -2,
+          0,
+          -3
+        ]
+      }
+    },
+    "beatShift": {
+      "4": {
+        "at": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "mid": [
+          10,
+          11,
+          7,
+          12
+        ],
+        "swing": 58.5
+      }
+    },
+    "ghostNotes": false,
+    "ghostVel": 62,
+    "hat16Cut": 4,
+    "hatAccent": 0,
+    "hatOffCut": 0,
+    "hatOffPushMs": 2,
+    "hatSd": 8,
+    "hatVel": 53,
+    "kickDownbeat": 3,
+    "kickSd": 7,
+    "kickVel": 95,
+    "phraseArc": 3,
+    "snareLaybackMs": 3,
+    "snareSd": 8,
+    "snareVel": 48,
+    "velJitter": 9.5,
+    "rimVel": 33,
+    "hatPedalVel": 53,
+    "hatOpenVel": 59
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "instrument": "drums",
+  "name": "ニュートラル（控えめ）",
+  "source": "builtin",
+  "order": 30,
+  "params": {
+    "phraseArc": 0,
+    "snareLaybackMs": 0,
+    "hatOffPushMs": 0
+  }
+}

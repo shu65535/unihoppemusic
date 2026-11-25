@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "instrument": "piano",
+  "name": "ニュートラル（控えめ）",
+  "source": "builtin",
+  "order": 50,
+  "params": {
+    "melodyVelArc": 10,
+    "accompVelBase": 64,
+    "melodyVelBase": 72,
+    "beatShift": {},
+    "melodyLeadMs": 0,
+    "phraseEndRitMs": 0,
+    "accompVelArc": 4
+  }
+}

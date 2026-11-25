@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 仮の sitemap。将来は data/ の内容からビルド時に自動生成する。ドメインは本番決定後に差し替え。 -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://example.com/</loc></url>
+  <url><loc>https://example.com/news</loc></url>
+  <url><loc>https://example.com/discography</loc></url>
+  <url><loc>https://example.com/discography/mahoroba-record-ost1</loc></url>
+  <url><loc>https://example.com/discography/mahoroba-record-chapter0-ost</loc></url>
+  <url><loc>https://example.com/works</loc></url>
+  <url><loc>https://example.com/lab</loc></url>
+  <url><loc>https://example.com/lab/music</loc></url>
+  <url><loc>https://example.com/lab/tools</loc></url>
+  <url><loc>https://example.com/lab/apps</loc></url>
+  <url><loc>https://example.com/about</loc></url>
+  <url><loc>https://example.com/contact</loc></url>
+</urlset>

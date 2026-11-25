@@ -1,0 +1,103 @@
+{
+  "version": 2,
+  "instrument": "piano",
+  "name": "デフォルト",
+  "source": "builtin",
+  "order": 10,
+  "meter": "4/4",
+  "note": "Phase 2 の音源解析で 4/4 の25曲から出した値の中央値（draft/presets/piano/_merged_piano_4-4.json の写し）。曲: 06 M07.m4a / 06 Ｍ０７.m4a / 1-03 grief.m4a / 1-05 on a day so calm.m4a / 1-07 Desiderium.m4a / 1-11 Inevitabilis.m4a / 1-18 school girl life.m4a / 1-21 painful.m4a / 1-26 at our parting ～piano only.m4a / 1-37 friendly feelings ～piano only.m4a / 14 fake jewel.wav / 19 Parting song.m4a / 2-02 Amicae carae meae.m4a / 2-11 Quamobrem_.m4a / 2-16 Taenia memoriae.m4a / 2-16 is this love_ ～piano only ver..m4a / 20 M22.m4a / 22 M22.m4a / 22 the breath of the era.m4a / 3-05 a tiny stream.m4a / 3-17 good bye, again and again.m4a / 33 媛星 ～真白～.m4a / 36 M38 + 39.m4a / 39 M43.m4a / 4-25 you are not alone ～piano ver..m4a",
+  "params": {
+    "accentGrid": {
+      "*": {
+        "scale": 3.6
+      },
+      "4/4": {
+        "acc": [
+          5,
+          -2,
+          1,
+          -2,
+          5,
+          -3,
+          1,
+          -3,
+          5,
+          -2,
+          0,
+          -4,
+          5,
+          -2,
+          1,
+          -3,
+          3,
+          -3,
+          0,
+          -3,
+          4,
+          -2,
+          0,
+          -4,
+          3,
+          -2,
+          0,
+          -3,
+          6,
+          -3,
+          2,
+          -3
+        ]
+      }
+    },
+    "accompLengthRatio": 1.2,
+    "accompTimingSd": 8,
+    "accompVelArc": 17,
+    "accompVelBase": 64,
+    "bassBoost": -5,
+    "beatShift": {
+      "4": {
+        "at": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "mid": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "chordSpreadMs": 0,
+    "legatoMs": 26,
+    "melodyLeadMs": 2,
+    "melodyTimingSd": 11,
+    "melodyVelArc": 22,
+    "melodyVelBase": 75,
+    "pedal": true,
+    "phraseEndRitMs": 1,
+    "rhInnerArcRatio": 0.85,
+    "rhInnerVelOffset": 5,
+    "velJitter": 8
+  },
+  "handStats": {
+    "R": {
+      "leadMs": 2,
+      "lengthRatio": 1,
+      "notes": 6742,
+      "timingSdMs": 11.3,
+      "velArc": 29.9,
+      "velMean": 73,
+      "velSd": 12.6
+    },
+    "L": {
+      "lengthRatio": 1.5,
+      "notes": 4013,
+      "timingSdMs": 7.6,
+      "velArc": 30,
+      "velMean": 64.6,
+      "velSd": 11.8
+    }
+  }
+}

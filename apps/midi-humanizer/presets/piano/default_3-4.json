@@ -1,0 +1,93 @@
+{
+  "version": 2,
+  "instrument": "piano",
+  "name": "デフォルト",
+  "source": "builtin",
+  "order": 20,
+  "meter": "3/4",
+  "note": "Phase 2 の音源解析で 3/4 の3曲から出した値の中央値（draft/presets/piano/_merged_piano_3-4.json の写し）。曲: 1-23 moonlight melody ～Piano ver..m4a / 17 M23.m4a / 18 M24.m4a",
+  "params": {
+    "accentGrid": {
+      "*": {
+        "scale": 2.2
+      },
+      "3/4": {
+        "acc": [
+          9,
+          -1,
+          -2,
+          -4,
+          4,
+          -6,
+          0,
+          -1,
+          7,
+          -1,
+          7,
+          -4,
+          9,
+          0,
+          6,
+          -5,
+          4,
+          -6,
+          0,
+          1,
+          7,
+          -5,
+          3,
+          -6
+        ]
+      }
+    },
+    "accompLengthRatio": 1.2,
+    "accompTimingSd": 9,
+    "accompVelArc": 27,
+    "accompVelBase": 60,
+    "bassBoost": -3,
+    "beatShift": {
+      "3": {
+        "at": [
+          0,
+          0,
+          2
+        ],
+        "mid": [
+          7,
+          0,
+          0
+        ]
+      }
+    },
+    "chordSpreadMs": 2,
+    "legatoMs": 0,
+    "melodyLeadMs": 0,
+    "melodyTimingSd": 17,
+    "melodyVelArc": 16,
+    "melodyVelBase": 65,
+    "pedal": true,
+    "phraseEndRitMs": 0,
+    "rhInnerArcRatio": 0.4,
+    "rhInnerVelOffset": 4,
+    "velJitter": 5.5
+  },
+  "handStats": {
+    "R": {
+      "leadMs": 0,
+      "lengthRatio": 1,
+      "notes": 888,
+      "timingSdMs": 16.6,
+      "velArc": 25.5,
+      "velMean": 69.7,
+      "velSd": 10.4
+    },
+    "L": {
+      "lengthRatio": 1.7,
+      "notes": 472,
+      "timingSdMs": 8.9,
+      "velArc": 29,
+      "velMean": 60,
+      "velSd": 12.5
+    }
+  }
+}

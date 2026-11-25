@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "instrument": "guitar",
+  "name": "ニュートラル（控えめ）",
+  "source": "builtin",
+  "order": 40,
+  "params": {
+    "phraseArc": 6,
+    "letRing": 0.2
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "instrument": "guitar",
+  "name": "--init--",
+  "source": "builtin",
+  "order": 20,
+  "note": "プリセットづくりのための初期値。揺れ・ランダム幅・拍ごとのタメ・強弱のパターン・抑揚などの効き目を0にしたもの。ベロシティ基準は他のプリセットと同じ「固定」で、基準値がそのまま効く。和音の微小なずれなど、コードに固定で入っているわずかな揺れは残る",
+  "params": {
+    "strumPattern": {},
+    "accentVelDepth": 0,
+    "accentVelSdDiff": 0,
+    "phraseArc": 0,
+    "downVelBoost": 0,
+    "upVelCut": 0,
+    "stringVelDecay": 0,
+    "brushVelCut": 0,
+    "pmVelCut": 0,
+    "pmHighCut": 0,
+    "velJitter": 0,
+    "strumDownMs": 0,
+    "strumUpMs": 0,
+    "strumSpreadJitter": 0,
+    "timingSd": 0,
+    "beatShift": {},
+    "muteGapMs": 0,
+    "muteOnChordChange": false,
+    "letRing": 0,
+    "lengthJitter": 0
+  }
+}

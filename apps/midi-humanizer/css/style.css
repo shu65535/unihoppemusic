@@ -1,0 +1,260 @@
+:root {
+  --bg: #16181d;
+  --panel: #1f2229;
+  --line: #333844;
+  --text: #e3e6ec;
+  --muted: #8b93a3;
+  --accent: #6ea8fe;
+  --danger: #ff6b6b;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 13px/1.5 "Segoe UI", "Yu Gothic UI", sans-serif; height: 100vh; display: flex; flex-direction: column; }
+header { padding: 10px 16px; border-bottom: 1px solid var(--line); display: flex; align-items: baseline; gap: 12px; }
+header h1 { margin: 0; font-size: 18px; }
+header .sub { color: var(--muted); }
+.help-btn { margin-left: auto; align-self: center; width: 24px; height: 24px; padding: 0; border-radius: 50%; font-weight: 600; line-height: 1; }
+main { flex: 1; display: flex; min-height: 0; }
+
+#controls { position: relative; flex-shrink: 0; width: var(--side-w, 340px); display: flex; flex-direction: column; border-left: 1px solid var(--line); background: var(--panel); }
+/* 左端の境界線をドラッグして幅を変える。ドラッグ中は文字選択を止める */
+.side-resizer { position: absolute; top: 0; bottom: 0; left: -3px; width: 6px; cursor: col-resize; z-index: 5; }
+.side-resizer:hover, body.side-resizing .side-resizer { background: var(--accent); opacity: .5; }
+body.side-resizing { cursor: col-resize; user-select: none; }
+#controls.collapsed .side-resizer { display: none; }
+.side-head { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-bottom: 1px solid var(--line); }
+.side-title { font-weight: 600; }
+.side-toggle { margin-left: auto; display: inline-flex; flex-direction: column; align-items: center; gap: 6px; padding: 4px 6px; line-height: 1; }
+.side-toggle-icon { display: block; }
+.side-toggle-label { display: none; writing-mode: vertical-rl; letter-spacing: 2px; }
+/* 矢印は開いているとき右向き（閉じる）、折りたたみ時は左向き（開く） */
+#controls.collapsed .side-toggle-arrow { transform: rotate(180deg); transform-origin: 5.75px 8px; }
+/* 折りたたみ時は開閉ボタンだけの細い帯にする */
+#controls.collapsed { width: 40px; }
+#controls.collapsed .side-scroll, #controls.collapsed .side-title { display: none; }
+#controls.collapsed .side-head { border-bottom: none; padding: 6px 4px; justify-content: center; }
+#controls.collapsed .side-toggle { margin-left: 0; padding: 6px 4px; }
+#controls.collapsed .side-toggle-label { display: block; }
+.side-scroll { flex: 1; overflow-y: auto; padding: 8px 12px; }
+#controls section, .group { margin-bottom: 14px; }
+.group h3, .group > summary { font-size: 13px; margin: 0 0 6px; padding-bottom: 4px; border-bottom: 1px solid var(--line); color: var(--accent); font-weight: 600; }
+details > summary { cursor: pointer; user-select: none; }
+.group .group { margin-left: 10px; }
+details.cat { margin-bottom: 8px; border: 1px solid var(--line); border-radius: 6px; padding: 0 10px; }
+details.cat > summary { font-size: 14px; font-weight: 600; padding: 8px 0; }
+details.cat[open] > summary { margin-bottom: 6px; border-bottom: 1px solid var(--line); }
+.row { display: flex; flex-direction: column; gap: 2px; margin-bottom: 8px; }
+.row.check { flex-direction: row; align-items: center; gap: 6px; }
+.row .head { display: flex; justify-content: space-between; }
+.load-modal select { width: 100%; }
+.load-modal .hint { margin: 4px 0 0; }
+.load-modal .load-inst { margin-right: auto; } /* 楽器固有の詳細設定は左端、キャンセル・読み込むは右端 */
+.val { color: var(--accent); font-variant-numeric: tabular-nums; }
+.hint { color: var(--muted); font-size: 11px; margin: -4px 0 8px; }
+.wave-edit { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+.wave-edit canvas { width: 100%; height: 80px; border: 1px solid var(--line); border-radius: 4px; cursor: crosshair; touch-action: none; }
+.beats-edit { display: flex; flex-direction: column; gap: 4px; }
+.beats-edit canvas { width: 100%; height: 64px; border: 1px solid var(--line); border-radius: 4px; touch-action: none; }
+.strum-edit canvas { height: 100px; }
+.beats-swing { display: flex; align-items: center; gap: 6px; font-size: 12px; }
+.beats-swing input[type='range'] { flex: 1; min-width: 0; }
+.beats-swing .val { min-width: 7em; text-align: right; color: var(--muted); }
+.beats-foot {display: flex; justify-content: space-between; align-items: center; gap: 6px; color: var(--muted); font-size: 12px; }
+.inline { display: flex; gap: 6px; }
+.buttons { flex-direction: row; gap: 6px; }
+input[type="range"] { width: 100%; }
+select, input[type="text"], button { background: #2a2e37; color: var(--text); border: 1px solid var(--line); border-radius: 4px; padding: 4px 8px; font: inherit; }
+button { cursor: pointer; }
+button:hover:not(:disabled) { border-color: var(--accent); }
+button:disabled { opacity: 0.4; cursor: default; }
+button.primary { background: var(--accent); color: #0b1220; border-color: var(--accent); font-weight: 600; }
+/* 文字の代わりにアイコンだけを出すボタン（icons.js。説明は title のツールチップ） */
+.ic-btn { display: inline-flex; align-items: center; justify-content: center; min-width: 32px; height: 28px; padding: 0 8px; }
+.ic-btn svg { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.ic-btn svg .fill { fill: currentColor; stroke: none; }
+.ic-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.beats-edit > .ic-btn { align-self: flex-end; }
+
+.info { color: var(--muted); font-size: 12px; margin-top: 6px; white-space: pre-line; }
+
+#view { flex: 1; display: flex; flex-direction: column; min-width: 0; padding: 10px; gap: 8px; }
+.toolbar { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; padding: 3px 6px; background: #1b1e25; border: 1px solid var(--line); border-radius: 6px; }
+.toolbar .spacer { flex: 1; }
+/* Cubase風のアイコンボタン（16×16 の線画。.fill は塗りつぶす部分） */
+.tb-group { display: inline-flex; align-items: center; gap: 2px; }
+.tb-sep { width: 1px; height: 20px; margin: 0 4px; background: var(--line); }
+.tb-btn { display: inline-flex; align-items: center; justify-content: center; min-width: 26px; height: 26px; padding: 0 4px; border-color: transparent; background: none; color: #b4bac6; }
+.tb-btn:hover:not(:disabled) { background: #2a2e37; border-color: transparent; color: var(--text); }
+.toolbar svg { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.toolbar svg .fill { fill: currentColor; stroke: none; }
+/* オンの状態（選択中のツール・ループ・スナップ・加工前の重ね表示） */
+.tb-btn[aria-checked="true"], .tb-btn[aria-pressed="true"], .tb-check:has(input:checked) { background: #3a4150; color: #fff; box-shadow: inset 0 0 0 1px #566074; }
+.tb-tools .tb-btn[aria-checked="true"] { background: var(--accent); color: #0b1220; box-shadow: none; }
+.tb-check input { display: none; }
+.tb-check { cursor: pointer; border-radius: 4px; }
+.tb-label { display: inline-flex; align-items: center; gap: 4px; color: #b4bac6; }
+.tb-select { height: 24px; padding: 0 4px; }
+#snapGrid { width: 84px; }
+/* 再生ボタンは再生中だけ停止のアイコンにする */
+.play .ic-stop, .play.on .ic-play { display: none; }
+.play.on .ic-stop { display: block; }
+/* ツールバー右端の「MIDIを開く」「MIDIを書き出す」（強調色のボタン） */
+.tb-download { display: inline-flex; align-items: center; gap: 4px; height: 26px; padding: 0 10px; }
+/* 右端に寄せる（折り返したときも右端） */
+.tb-file { display: inline-flex; align-items: center; gap: 4px; margin-left: auto; }
+.tb-run { padding: 0 8px; white-space: nowrap; font-size: 12px; }
+.hand-btn { font-weight: 700; font-size: 12px; }
+/* 手・ストローク方向・奏法のボタン（ギターは6個並ぶので詰める） */
+.hand-tools .hand-btn { min-width: 22px; padding: 0 2px; }
+#articTools { display: contents; }
+.hand-btn.right { color: hsl(212, 85%, 65%); }
+.hand-btn.left { color: hsl(28, 85%, 62%); }
+.hand-btn.right[aria-pressed="true"] { background: hsl(212, 85%, 55%); color: #0b1220; box-shadow: none; }
+.hand-btn.left[aria-pressed="true"] { background: hsl(28, 85%, 55%); color: #0b1220; box-shadow: none; }
+/* ピアノロールの枠。右端に音域のスクロール・縦ズーム、下端の右に横ズームのバーを置く（Cubase風） */
+.roll-frame { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) 16px; grid-template-rows: minmax(0, 1fr) 18px; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: #111317; }
+/* ブラウザのスクロールバーは出さない（右端・右下のバーと重なるため）。スクロール自体はホイール・Shift+ホイール・ホイール押下のドラッグでできる */
+.roll-wrap { overflow: auto; min-height: 0; background: #111317; scrollbar-width: none; }
+.roll-wrap::-webkit-scrollbar { display: none; }
+.v-bar { position: relative; overflow: hidden; background: #1b1e25; border-left: 1px solid var(--line); }
+.pitch-bar { position: absolute; left: 0; right: 0; display: flex; flex-direction: column; align-items: center; }
+.pitch-track { position: relative; flex: 1; min-height: 0; width: 100%; background: #15171c; cursor: default; }
+.pitch-thumb { position: absolute; left: 3px; right: 3px; min-height: 12px; border-radius: 3px; background: #4a5160; }
+.pitch-thumb:hover, .pitch-thumb.dragging { background: #6a7384; }
+.bar-btn { flex: none; width: 16px; height: 14px; padding: 0; border: none; border-radius: 0; background: none; color: var(--muted); font-size: 9px; line-height: 1; }
+.bar-btn:hover:not(:disabled) { color: var(--text); background: #2a2e37; }
+.roll-frame input[type="range"] { accent-color: #8b93a3; }
+.v-zoom { flex: none; writing-mode: vertical-lr; width: 16px !important; height: 56px; margin: 2px 0; }
+.h-bar { grid-column: 1 / 3; display: flex; justify-content: flex-end; align-items: center; gap: 6px; background: #1b1e25; border-top: 1px solid var(--line); }
+/* 横スクロール。左端は app.js がノート領域の左端（鍵盤の列の右）に合わせる */
+.h-scroll { flex: 1; min-width: 0; display: flex; align-items: center; height: 100%; }
+.h-track { position: relative; flex: 1; min-width: 0; height: 100%; background: #15171c; }
+.h-thumb { position: absolute; top: 4px; bottom: 4px; min-width: 16px; border-radius: 3px; background: #4a5160; }
+.h-thumb:hover, .h-thumb.dragging { background: #6a7384; }
+.h-zoom { display: inline-flex; align-items: center; gap: 2px; padding-right: 2px; }
+#hZoom { width: 96px; height: 14px; }
+canvas { display: block; }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 16px; color: var(--muted); font-size: 12px; }
+.legend > span { white-space: nowrap; }
+.sw { display: inline-block; width: 14px; height: 8px; margin-right: 4px; vertical-align: middle; }
+.sw.before { border: 1px solid #8b93a3; }
+.sw.after { background: #ff9f43; }
+.sw.edited { border: 1px solid #ffffff; }
+.hidden { display: none !important; }
+.off { display: none; }
+.warn { color: #ffb86b; }
+
+/* モーダルの見出し・本文（ドラムマップの欄・レーン設定などで共通） */
+.dm-modal-head { display: flex; align-items: center; justify-content: space-between; }
+.dm-modal-head h2 { margin: 0 0 10px; }
+.dm-modal-x { border: none; background: none; color: var(--muted); font-size: 18px; padding: 0 6px; margin-top: -10px; }
+.dm-modal-x:hover { color: var(--text); }
+.dm-modal-body { flex: 1; min-height: 0; overflow-y: auto; padding-right: 4px; }
+.dm-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 10px; }
+.dm-map { display: flex; align-items: center; gap: 6px; margin-right: auto; }
+.dm-map select { min-width: 200px; }
+.dm-kb { margin-bottom: 10px; }
+.dm-palette { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 6px; }
+.dm-brush { display: inline-flex; align-items: center; padding: 1px 8px; font-size: 11px; }
+.dm-brush.on { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
+.dm-kb-canvas { display: block; width: 100%; height: auto; cursor: pointer; touch-action: none; border-radius: 3px; }
+.legend-parts { display: inline-flex; flex-wrap: wrap; gap: 4px 10px; white-space: normal !important; }
+select.add { font-size: 11px; padding: 1px 4px; }
+.roll-wrap { position: relative; }
+/* 固定表示する部分（キャンバスの該当部分の写し）。幅を中身に合わせないと、横に画面幅を超えてスクロールしたところで固定が外れる */
+.roll-inner { width: max-content; }
+.roll-corner, .roll-ruler, .roll-keys { position: sticky; pointer-events: none; }
+.roll-corner { top: 0; left: 0; z-index: 4; }
+.roll-ruler { top: 0; z-index: 1; }
+.roll-keys { left: 0; z-index: 3; }
+.sel-box { position: absolute; border: 1px dashed #ffe066; background: rgba(255, 224, 102, 0.08); pointer-events: none; }
+/* レーン上のカーソル位置の値 */
+.value-tip { position: absolute; z-index: 3; padding: 1px 5px; border: 1px solid #6b6f78; border-radius: 2px; background: #d8d8d8; color: #111; font: 600 11px/1.3 sans-serif; pointer-events: none; white-space: nowrap; }
+.hand-info { color: var(--muted); font-size: 12px; margin-left: 4px; }
+.sw.right { background: hsl(212, 85%, 55%); }
+.sw.left { background: hsl(28, 85%, 55%); }
+.sw.single { background: hsl(220, 8%, 55%); }
+.hand-tag { display: inline-block; margin-right: 6px; padding: 0 5px; border-radius: 3px; font-size: 11px; font-weight: 600; color: #0b1220; }
+.hand-tag.right { background: hsl(212, 85%, 55%); }
+.hand-tag.left { background: hsl(28, 85%, 55%); }
+#roll:focus { outline: none; }
+
+/* 再生 */
+button.play.on { background: #3a2a2a; color: var(--danger); }
+
+.playhead { position: absolute; top: 0; width: 0; border-left: 2px solid #ffd166; pointer-events: none; z-index: 2; }
+.playhead i { position: absolute; top: 0; left: -7px; border: 6px solid transparent; border-top: 8px solid #ffd166; }
+.playhead.playing { border-left-color: #ff5d5d; }
+.playhead.playing i { border-top-color: #ff5d5d; }
+
+/* ファイルのドロップ */
+.empty-msg { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-align: center; color: var(--muted); pointer-events: none; }
+.drop-overlay { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; background: rgba(15, 20, 30, 0.75); border: 3px dashed var(--accent); pointer-events: none; }
+.drop-overlay p { font-size: 20px; color: var(--text); }
+
+/* モーダル */
+.modal-back { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; background: rgba(0, 0, 0, 0.55); }
+.modal { min-width: 340px; max-width: 520px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px 18px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5); }
+.modal h2 { margin: 0 0 10px; font-size: 15px; }
+.modal-msg { margin: 0 0 12px; white-space: pre-line; }
+.modal input[type="text"] { width: 100%; }
+.modal-choices { display: flex; flex-direction: column; gap: 8px; margin: 0 0 14px; }
+.modal-choice { display: flex; align-items: flex-start; gap: 8px; cursor: pointer; }
+.modal-choice input { margin-top: 3px; }
+.modal-choice-text { display: flex; flex-direction: column; gap: 2px; }
+.modal-choice-text small { color: var(--muted); font-size: 11px; }
+.modal-sub { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; margin: -2px 0 0 24px; }
+.modal-sub-label { color: var(--muted); font-size: 12px; }
+.modal-sub .modal-choice:has(input:disabled) { opacity: 0.45; cursor: default; }
+.modal-buttons { display: flex; justify-content: flex-end; gap: 8px; margin-top: 12px; }
+button.danger { background: var(--danger); color: #1a0b0b; border-color: var(--danger); font-weight: 600; }
+
+/* CC・ピッチベンドのレーン: 左端の列の下端に固定表示する作成・設定ボタン（高さは preview.js の FOOT_H と合わせる） */
+.lane-tools { position: sticky; left: 0; bottom: 0; z-index: 5; display: flex; width: 72px; height: 20px; margin-top: -20px; background: #1b1e25; border-top: 1px solid var(--line); border-right: 1px solid var(--line); }
+.lane-tools button { flex: 1; padding: 0; border: none; border-radius: 0; background: none; color: var(--muted); font-size: 11px; line-height: 1; }
+.lane-tools button + button { border-left: 1px solid var(--line); font-size: 8px; }
+.lane-tools button:hover:not(:disabled) { color: var(--text); background: #2a2e37; }
+/* レーン設定（モーダル） */
+.modal.lane-modal { width: min(420px, 94vw); max-height: 88vh; display: flex; flex-direction: column; outline: none; }
+.lane-modal .dm-modal-body { display: flex; flex-direction: column; gap: 6px; }
+/* 楽器固有の詳細設定（一般のボタンで開くモーダル。中身はサイドバーと同じ設定欄。ファイルを開く前は楽器ごとのタブを出す） */
+/* タブを切り替えても大きさが変わらないよう、幅・高さを固定する（ドラムの鍵盤が入る幅。入りきらない分は本文をスクロール） */
+.modal.inst-modal { width: min(1150px, 94vw); height: min(840px, 88vh); max-width: none; display: flex; flex-direction: column; outline: none; }
+.inst-tabs { display: flex; gap: 2px; margin-bottom: 10px; border-bottom: 1px solid var(--line); }
+.inst-tab { border: 1px solid transparent; border-bottom: none; border-radius: 4px 4px 0 0; background: none; color: var(--muted); padding: 4px 14px; margin-bottom: -1px; }
+.inst-tab:hover { color: var(--text); }
+.inst-tab[aria-selected="true"] { color: var(--accent); border-color: var(--line); background: var(--panel); }
+/* 操作方法（ヘッダーの「?」で開くモーダル） */
+.modal.help-modal { width: min(560px, 94vw); max-width: none; max-height: 88vh; display: flex; flex-direction: column; outline: none; }
+.help-list { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 8px 14px; }
+.help-list dt { font-weight: 600; white-space: nowrap; }
+.help-list dd { margin: 0; }
+/* 設定項目名の横の「?」（フォーカス・マウスで概要のツールチップ、クリックで詳細のモーダル） */
+.name { display: inline-flex; align-items: center; gap: 4px; }
+.info-btn { width: 15px; height: 15px; padding: 0; border-radius: 50%; flex: none; font-size: 10px; font-weight: 600; line-height: 1; color: var(--muted); }
+.info-btn:hover:not(:disabled), .info-btn:focus-visible { color: var(--text); }
+.info-tip { position: fixed; z-index: 110; max-width: 260px; padding: 5px 8px; border: 1px solid var(--line); border-radius: 4px; background: #2a2e37; color: var(--text); font-size: 12px; line-height: 1.45; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45); pointer-events: none; }
+.info-tip-more { display: block; margin-top: 2px; color: var(--muted); font-size: 11px; }
+.modal.info-modal { width: min(440px, 94vw); }
+.info-detail { margin: 0; white-space: pre-line; }
+.lane-item { display: flex; align-items: center; gap: 8px; }
+.lane-item .lane-no { width: 22px; color: var(--muted); font-size: 12px; text-align: right; font-variant-numeric: tabular-nums; }
+.lane-item .lane-sw { width: 10px; height: 10px; border-radius: 2px; flex: none; }
+.lane-item select { flex: 1; }
+.lane-item .lane-lock { min-width: 0; height: auto; align-self: stretch; padding: 0 7px; color: var(--muted); }
+.lane-item .lane-lock:hover { color: var(--text); }
+.lane-item .lane-lock[aria-pressed="true"] { color: var(--accent); }
+.lane-item .lane-x { padding: 4px 9px; color: var(--muted); }
+.lane-item .lane-x:hover { color: var(--danger); }
+.lane-empty { color: var(--muted); margin: 4px 0; }
+.lane-add { align-self: flex-start; margin-top: 4px; }
+.roll-wrap.panning, .roll-wrap.panning canvas { cursor: grabbing !important; }
+
+/* ピアノロール・レーンの右クリックメニュー */
+.ctx-menu { position: fixed; z-index: 50; min-width: 180px; padding: 4px 0; border: 1px solid var(--line); border-radius: 4px; background: var(--panel); box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5); user-select: none; }
+.ctx-item { display: flex; align-items: center; width: 100%; padding: 4px 10px 4px 6px; border: none; border-radius: 0; background: none; text-align: left; font-size: 12px; }
+.ctx-item:hover:not(:disabled) { background: var(--accent); color: #0b1220; }
+.ctx-mark { width: 16px; text-align: center; }
+.ctx-label { flex: 1; }
+.ctx-key { margin-left: 16px; color: var(--muted); font-size: 11px; }
+.ctx-item:hover:not(:disabled) .ctx-key { color: inherit; }
+.ctx-sep { height: 1px; margin: 4px 0; background: var(--line); }

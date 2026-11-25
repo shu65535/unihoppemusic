@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "instrument": "piano",
+  "name": "--init--",
+  "source": "builtin",
+  "order": 20,
+  "note": "プリセットづくりのための初期値。揺れ・ランダム幅・拍ごとのタメ・強弱のパターン・抑揚などの効き目を0にしたもの。ベロシティ基準は他のプリセットと同じ「固定」で、基準値がそのまま効く。和音の微小なずれなど、コードに固定で入っているわずかな揺れは残る",
+  "params": {
+    "accentGrid": {},
+    "accentVelDepth": 0,
+    "accentVelSdDiff": 0,
+    "melodyVelArc": 0,
+    "rhInnerVelOffset": 0,
+    "accompVelArc": 0,
+    "bassBoost": 0,
+    "phraseEndSoften": 0,
+    "velJitter": 0,
+    "beatShift": {},
+    "melodyTimingSd": 0,
+    "melodyLeadMs": 0,
+    "accompTimingSd": 0,
+    "chordSpreadMs": 0,
+    "phraseEndRitMs": 0,
+    "legatoMs": 0,
+    "accompLengthRatio": 1,
+    "lengthJitter": 0,
+    "phraseEndExtend": 0
+  }
+}

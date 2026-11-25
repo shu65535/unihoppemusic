@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "instrument": "drums",
+  "name": "--init--",
+  "source": "builtin",
+  "order": 20,
+  "note": "プリセットづくりのための初期値。揺れ・ランダム幅・拍ごとのタメ・強弱のパターン・抑揚などの効き目を0にしたもの。ベロシティ基準は他のプリセットと同じ「固定」で、基準値がそのまま効く。和音の微小なずれなど、コードに固定で入っているわずかな揺れは残る",
+  "params": {
+    "accentGrid": {},
+    "accentVelDepth": 0,
+    "accentVelSdDiff": 0,
+    "phraseArc": 0,
+    "velJitter": 0,
+    "kickDownbeat": 0,
+    "ghostNotes": false,
+    "hatAccent": 0,
+    "hatOffCut": 0,
+    "hat16Cut": 0,
+    "fillCresc": 0,
+    "beatShift": {},
+    "kickSd": 0,
+    "snareSd": 0,
+    "snareLaybackMs": 0,
+    "ghostSd": 0,
+    "hatSd": 0,
+    "hatOffPushMs": 0,
+    "tomSd": 0,
+    "cymbalSd": 0
+  }
+}

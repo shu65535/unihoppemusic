@@ -1,0 +1,53 @@
+{
+  "version": 2,
+  "instrument": "guitar",
+  "name": "デフォルト",
+  "source": "builtin",
+  "order": 10,
+  "meter": "4/4",
+  "note": "Phase 2 の音源解析で 4/4 の12曲から出した値の中央値（draft/presets/guitar/_merged_guitar_4-4.json の写し）。曲: 1-12 battle of the shadows.m4a / 04 frenetic.m4a / 2-09 godsibb.m4a / 1-22 lancer and assassin.m4a / 1-21 luminous sword.m4a / 14 M19 + 20.m4a / 22 M24.m4a / 2-10 Numquam vincar.m4a / 3-16 she has to overcome her fear.m4a / 3-22 the four rings.m4a / 1-15 Venari strigas.m4a / 37 we're here for you.m4a",
+  "params": {
+    "beatShift": {
+      "4": {
+        "at": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "mid": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "phraseArc": 11,
+    "strumPattern": {
+      "4/4": {
+        "acc": [
+          -5,
+          3,
+          -3,
+          2,
+          -5,
+          4,
+          -1,
+          5,
+          -5,
+          5,
+          -1,
+          5,
+          -6,
+          5,
+          -1,
+          1
+        ]
+      }
+    },
+    "timingSd": 15,
+    "velBase": 52,
+    "velJitter": 7
+  }
+}
